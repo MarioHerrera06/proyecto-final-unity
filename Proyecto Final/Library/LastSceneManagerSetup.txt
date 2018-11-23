@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Proyecto/Componentes A/_Complete-Game.unity
+- path: Assets/Proyecto/Componentes A/Proyecto1.unity
   isLoaded: 1
   isActive: 1

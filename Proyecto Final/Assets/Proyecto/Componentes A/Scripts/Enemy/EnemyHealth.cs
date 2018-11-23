@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
 namespace CompleteProject
 {
     public class EnemyHealth : MonoBehaviour
@@ -14,8 +14,8 @@ namespace CompleteProject
         public int score2 = 5;
 
         Animator anim;                              // Reference to the animator.
-        AudioSource enemyAudio;                     // Reference to the audio source.
-        ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
+         AudioSource enemyAudio;                     // Reference to the audio source.
+         ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
         CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
         bool isDead;                                // Whether the enemy is dead.
         bool isSinking;                             // Whether the enemy has started sinking through the floor.
@@ -32,8 +32,8 @@ namespace CompleteProject
         {
             // Setting up the references.
             anim = GetComponent <Animator> ();
-            enemyAudio = GetComponent <AudioSource> ();
-            hitParticles = GetComponentInChildren <ParticleSystem> ();
+           enemyAudio = GetComponent <AudioSource> ();
+             hitParticles = GetComponentInChildren <ParticleSystem> ();
             capsuleCollider = GetComponent <CapsuleCollider> ();
 
             // Setting the current health when the enemy first spawns.
@@ -107,7 +107,12 @@ namespace CompleteProject
             GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false;
             GetComponent <Rigidbody> ().isKinematic = true;
             isSinking = true;
+
             ScoreManager.score += scoreValue;
+            if (ScoreManager.score >= 100)
+            {
+                SceneManager.LoadScene(1);
+            }
             
             Destroy (gameObject, 2f);
         }
